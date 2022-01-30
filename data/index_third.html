@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document Object Model</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1>Asabeneh Yetayeh challenges in 2020</h1>
+        <h2>30DaysOfJavaScript Challenge</h2>
+        <ul>
+            <li>30DaysOfPython Challenge Done</li>
+            <li>30DaysOfJavaScript Challenge Ongoing</li>
+            <li>30DaysOfReact Challenge Coming</li>
+            <li>30DaysOfFullStack Challenge Coming</li>
+            <li>30DaysOfDataAnalysis Challenge Coming</li>
+            <li>30DaysOfReactNative Challenge Coming</li>
+            <li>30DaysOfMachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+
+    <script>
+        // Exercise: LEVEL 3
+        /*
+        * Develop the following application, use the following HTML elements to get started with. You will get the same code on starter folder. Apply all the styles and functionality using JavaScript only.
+        * The year color is changing every 1 second
+        * The date and time background color is changing every on seconds
+        * Completed challenge has background green
+        * Ongoing challenge has background yellow
+        * Coming challenges have background red
+        */
+
+        const global = document.querySelector('body');
+        global.style.textAlign = 'center';
+
+        // Styling title h1
+
+        const titleToRemove = document.querySelector('h1');
+        titleToRemove.remove();
+
+        const containerTitle = document.createElement('div');
+        containerTitle.setAttribute('class', 'containerTitle');
+        containerTitle.style.display = 'flex';
+        containerTitle.style.justifyContent = 'center';
+        containerTitle.style.alignItems = 'baseline';
+
+        const title = document.createElement('h1');
+        const year = document.createElement('h1');
+        year.style.marginLeft = '15px';
+        year.style.fontSize = '60px';
+        title.innerHTML = "Asabeneh Yetayeh challenges in";
+        year.innerHTML = "2020";
+
+        const container = document.querySelector('div');
+        container.insertBefore(containerTitle, container.firstChild);
+        containerTitle.appendChild(title);
+        containerTitle.appendChild(year);
+
+        setInterval(
+            function () {
+                var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                year.style.color = "#" + randomColor;
+            }, 1000);
+    </script>
+</body>
+
+</html>
