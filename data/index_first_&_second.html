@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document Object Model</title>
+</head>
+
+<body>
+
+    <p id="one">paragraph element 1</p>
+    <p id="two">paragraph element 2</p>
+    <p id="three">paragraph element 3</p>
+    <p id="four">paragraph element 4</p>
+
+    <script>
+
+        //Exercise: LEVEL 1 
+        // 1.-
+        const pFirstTag = document.querySelector('p').innerHTML;
+        console.log(`Exercise 1:  ${pFirstTag}`);
+
+        // 2.-
+        const pTagOne = document.querySelector('#one').innerHTML;
+        const pTagTwo = document.querySelector('#two').innerHTML;
+        const pTagThree = document.querySelector('#three').innerHTML;
+        const pTagFour = document.querySelector('#four').innerHTML;
+
+        console.log(`Exercise 2: 
+            ${pTagOne}
+            ${pTagTwo}
+            ${pTagThree}
+            ${pTagFour}
+        `);
+
+        //3.- & 4.-
+        const allTags = document.querySelectorAll('p');
+        console.log('Exercise 3 & 4:');
+        allTags.forEach((p) => console.log(p));
+
+        // 5.-
+        const fourthParagraph = document.querySelector('#four').innerHTML;
+        fourthParagraph.innerHTML = 'Fourth Paragraph';
+        console.log(`Exercise 5: ${fourthParagraph}`);
+
+        // 6.-
+        const pFirst = document.querySelector('#one');
+        pFirst.classList.add('add-another-class-without-override');
+
+        const pSecond = document.querySelector('#two');
+        pSecond.setAttribute('class', 'new class two');
+        pSecond.setAttribute('id', 'new id two');
+
+        const pThree = document.querySelector('#three');
+        pThree.id = 'new id two';
+
+        const pFour = document.querySelector('#four');
+        pFour.class = 'new class four';
+        console.log('Exercise 6:');
+
+        // Exercise: LEVEL 2
+
+        // 1.-
+        pFirst.style.backgroundColor = 'black';
+        pSecond.style.fontSize = '25px';
+        pThree.style.border = '3px solid';
+        pFour.style.fontFamily = "'Courier New', monospace";
+
+        // 2.-
+        const allPs = document.querySelectorAll('p');
+        allPs.forEach((p, index) => {
+            (index === 0 || index === 2)
+                ? p.style.color = 'green'
+                : p.style.color = 'red';
+        });
+
+        //3.- 
+        allPs.forEach((p, index) => {
+            p.textContent = `New text content for paragraph ${index + 1}`;
+        });
+    </script>
+</body>
+
+</html>
