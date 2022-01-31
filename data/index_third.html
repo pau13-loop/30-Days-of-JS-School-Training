@@ -67,13 +67,39 @@
             }, 1000);
 
         // Styling h2
-            const subTitle = document.querySelector('h2');
-            subTitle.style.textDecoration = 'underline';
-            subTitle.style.fontSize = '15px';
-            subTitle.style.fontWeight = 100;
+        const subTitle = document.querySelector('h2');
+        subTitle.style.textDecoration = 'underline';
+        subTitle.style.fontSize = '15px';
+        subTitle.style.fontWeight = 100;
 
         // Insert and style date
+        const containerDate = document.createElement('div');
+        containerDate.setAttribute('class', 'containerDate');
+        containerDate.style.margin = 'auto';
+        containerDate.style.display = 'inline-block';
+        containerDate.style.verticalAlign = 'middle';
+        containerDate.style.padding = "0px 20px";
+        containerDate.style.borderRadius = "5px"
+        containerDate.style.backgroundColor = 'pink';
+
+        setInterval(
+            function () {
+                var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                containerDate.style.backgroundColor = "#" + randomColor;
+            }, 3000)
+
+        const dateParagraph = document.createElement('p');
+        containerDate.appendChild(dateParagraph);
+
+        setInterval(
+            function () {
+                const currentDate = new Date();
+                const dateTime = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
+                dateParagraph.innerHTML = dateTime;
+            }, 1000)
         
+
+        subTitle.parentNode.insertBefore(containerDate, subTitle.nextSibling);
 
     </script>
 </body>
