@@ -34,6 +34,7 @@
 
         const global = document.querySelector('body');
         global.style.textAlign = 'center';
+        global.style.fontFamily = "Arial, sans-serif";
 
         // Styling title h1
 
@@ -45,6 +46,7 @@
         containerTitle.style.display = 'flex';
         containerTitle.style.justifyContent = 'center';
         containerTitle.style.alignItems = 'baseline';
+        containerTitle.style.maxHeight = '120px';
 
         const title = document.createElement('h1');
         const year = document.createElement('h1');
@@ -63,6 +65,16 @@
                 var randomColor = Math.floor(Math.random() * 16777215).toString(16);
                 year.style.color = "#" + randomColor;
             }, 1000);
+
+        // Styling h2
+            const subTitle = document.querySelector('h2');
+            subTitle.style.textDecoration = 'underline';
+            subTitle.style.fontSize = '15px';
+            subTitle.style.fontWeight = 100;
+
+        // Insert and style date
+        
+
     </script>
 </body>
 
