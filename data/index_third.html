@@ -69,7 +69,7 @@
         // Styling h2
         const subTitle = document.querySelector('h2');
         subTitle.style.textDecoration = 'underline';
-        subTitle.style.fontSize = '15px';
+        subTitle.style.fontSize = '20px';
         subTitle.style.fontWeight = 100;
 
         // Insert and style date
@@ -97,9 +97,32 @@
                 const dateTime = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
                 dateParagraph.innerHTML = dateTime;
             }, 1000)
-        
 
         subTitle.parentNode.insertBefore(containerDate, subTitle.nextSibling);
+
+        // Syle list
+        const listChallenges = document.querySelector('ul');
+        const challenges = document.querySelectorAll('li');
+
+        listChallenges.style.listStyleType = 'none';
+        listChallenges.style.textAlign = "-webkit-center"
+
+        challenges.forEach((challenge) => {
+            challenge.style.padding = '15px 25px';
+            challenge.style.margin = '5px';
+            challenge.style.maxWidth = '50%';
+            challenge.style.textAlign = 'initial';
+            if (challenge.textContent.indexOf('Done') !== -1) {
+                challenge.style.backgroundColor = '#5BBC7A';
+            }
+            else if (challenge.textContent.indexOf('Ongoing') !== -1) {
+                challenge.style.backgroundColor = '#F7DC5C';
+            }
+            else {
+                challenge.style.backgroundColor = '#EB695B';
+            }
+        })
+
 
     </script>
 </body>
