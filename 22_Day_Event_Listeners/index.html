@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>22 Day Event Listeners</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* HTML tags */
+        h1 {
+            color: #5BBC7A;
+            font-size: 40px;
+        }
+
+        /* Class elements */
+        .header {
+            text-align: center;
+            line-height: 15px;
+        }
+
+        .contextHeader {
+            line-height: 5px;
+        }
+
+        .containerForm {
+            width: fit-content;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .boxForm {
+            min-width: 500px;
+            height: 35px;
+            border: 2px solid #5BBC7A;
+        }
+
+        .btnForm {
+            background-color: #5BBC7A;
+            color: white;
+            padding: 13px;
+            border: 0px;
+        }
+
+        .containerValues {
+            margin: auto;
+            margin-top: 25px;
+            width: 65%;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Number Generator</h1>
+
+        <div class="contextHeader">
+            <p style="font-size: 20px;">30DaysOfJavaScript:DOM Day 3</p>
+            <p>Author: Pau Llinàs Amat</p>
+        </div>
+    </div>
+
+    <div class="containerForm">
+        <form class="formParentElement">
+            <input type="text" id="valueForm" name="fnumber" class="boxForm">
+            <input type="button" value="Generate numbers" class="btnForm">
+        </form>
+    </div>
+
+    <div class="containerValues">
+    </div>
+
+    <!-- JS -->
+    <script>
+        const inputValue = document.querySelector('.boxForm');
+        const btnForm = document.querySelector('.btnForm');
+        const formElement = document.querySelector('.formParentElement');
+
+        btnForm.addEventListener('click', () => {
+            // Validation in case the input is undefined
+            if (inputValue.value.length === 0) {
+                createMessageError('Enter number value on the input field to generate numbers');
+            }
+            // Validation in case is not a number (NaN)
+            else if (isNaN(inputValue.value)) {
+                createMessageError("Input value must be a number");
+            }
+            // Successful case
+            else {
+                numbersGenerator(inputValue.value);
+            }
+        });
+
+        function createMessageError(message) {
+            const error = document.querySelector('.error');
+            if (error) {
+                error.innerHTML = message;
+            }
+            else {
+                const errorMessage = document.createElement('p');
+                errorMessage.setAttribute('class', 'error');
+                errorMessage.innerHTML = message;
+
+                errorMessage.style.color = 'red';
+                errorMessage.style.fontSize = '15px';
+                errorMessage.style.lineHeight = "0px";
+
+                formElement.insertBefore(errorMessage, inputValue);
+            }
+        }
+
+        function numbersGenerator(num) {
+            const containerNumbers = document.querySelector('.containerValues');
+
+            for (i = 0; i < num; i++) {
+                const number = document.createElement('div');
+                console.log('Me ejecuto: ', i);
+                console.log('containerNumbers: ', containerNumbers);
+                console.log('number: ', number);
+
+
+
+                number.innerHTML = i;
+                number.style.color = "white";
+                number.style.fontWeight = "bold";
+                number.style.minWidth = "100px";
+                number.style.height = "50px";
+                number.style.fontSize = "45px";
+                number.style.textAlign = "center";
+
+                if (isPrime(i)) {
+                    number.style.backgroundColor = "#EB695B";
+                }
+                else if (isEven(i)) {
+                    number.style.backgroundColor = "#5BBC7A";
+                }
+                else {
+                    number.style.backgroundColor = "#F7DC5C";
+                }
+
+
+                containerNumbers.appendChild(number);
+            }
+        }
+
+        // Source: https://stackoverflow.com/questions/40200089/number-prime-test-in-javascript
+        function isPrime(num) {
+            for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+                if (num % i === 0) return false;
+            return num > 1;
+        }
+
+        function isEven(num) {
+            return num % 2 == 0 ? true : false
+        }
+    </script>
+</body>
+
+</html>
