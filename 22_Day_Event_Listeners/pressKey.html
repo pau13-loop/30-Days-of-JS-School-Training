@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>22 Day Event Listeners</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* HTML tags */
+
+        /* Class elements */
+        .container {
+            height: 97vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .centeredContainer {
+            width: 500px;
+            height: 70px;
+            border: 3px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: 600;
+            box-shadow: 0px 0px 5px 2px lightgrey;
+            border-radius: 7px;
+            gap: 15px;
+        }
+
+        .prompt {
+            text-shadow: 1px 1px 2px grey;
+        }
+
+        .keyBox {
+            width: 155px;
+            height: 185px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0px 0px 5px 2px lightgrey;
+            text-align: center;
+            border-radius: 7px;
+        }
+
+        .newElement {
+            color: #5BBC7A;
+            text-shadow: 1px 2px 2px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="centeredContainer">
+            <p class="prompt">You pressed </p>
+        </div>
+        <div class="keyBox">
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+
+        const centeredContainer = document.querySelector('.centeredContainer');
+        const promptValue = document.querySelector('.prompt');
+        const keyBox = document.querySelector('.keyBox');
+
+        document.body.addEventListener('keypress', e => {
+            addKeyValue(e.key);
+            addKeyCode(e.keyCode);
+        });
+
+        function addKeyValue(value) {
+            const newElementKeyValue = document.querySelector('#newElementKeyValue');
+            if (newElementKeyValue) {
+                newElementKeyValue.innerHTML = value;
+            }
+            else {
+                const valueKey = document.createElement('p');
+                valueKey.setAttribute('class', 'newElement');
+                valueKey.setAttribute('id', 'newElementKeyValue');
+                valueKey.innerHTML = value;
+
+                centeredContainer.appendChild(valueKey);
+            }
+        }
+
+        function addKeyCode(keyCode) {
+            const newElementKeyCode = document.querySelector('#newElementKeyCode');
+            if (newElementKeyCode) {
+                newElementKeyCode.innerHTML = keyCode;
+            }
+            else {
+                const valueKey = document.createElement('h1');
+                valueKey.setAttribute('class', 'newElement');
+                valueKey.setAttribute('id', 'newElementKeyCode');
+                valueKey.style.fontSize = '80px';
+                valueKey.innerHTML = keyCode;
+
+                keyBox.appendChild(valueKey);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
